@@ -1,31 +1,24 @@
 {
-  "name": "apirest",
+  "name": "busontime",
   "version": "1.0.0",
-  "description": "upload File and exexute jar",
-  "main": "index.js",
+  "description": "",
+  "main": "app.js",
   "scripts": {
-	"start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "engines": {
-    "node": "8.7.0",
-    "npm": "5.5.1"
-  },
-  "author": "tonsquemike",
-  "license": "ISC",
-  "dependencies": {
-    "body-parser": "^1.18.2",
-    "express": "^4.16.2",
-    "formidable": "^1.1.1",
-    "hashmap": "^2.3.0",
-    "nodemon": "^1.12.1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Masdz/busOnTimeS.git"
   },
+  "author": "",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/Masdz/busOnTimeS/issues"
   },
-  "homepage": "https://github.com/Masdz/busOnTimeS#readme"
+  "homepage": "https://github.com/Masdz/busOnTimeS#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "hashmap": "^2.3.0"
+  }
 }

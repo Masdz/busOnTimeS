@@ -48,8 +48,8 @@ setInterval(function () {
         }
     }
     console.log("validacion finalizada");
-//},1200000);
-}, 3000);
+},1200000);
+//},30000 );
 
 app.get('/OBTENERCORDENADAS/:id?', function (req, res, next) {
     var response = "";

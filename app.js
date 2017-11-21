@@ -87,6 +87,8 @@ app.post('/LOGINPASAJERO', function (req, res) {
         }else{
             if(!exito){
                 res.status(200).send('Usuario o contraseña incorectos');
+				console.log(email);
+				console.log(pass);
             }else{
                 res.status(200).send(exito);
             }

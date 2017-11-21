@@ -83,10 +83,10 @@ app.post('/LOGINPASAJERO', function (req, res) {
     var pass=req.body.pass;
     Pasajero.findOne({email:email,contraseña:pass},(error,exito)=>{
         if(error){
-            res.status(404).send('Usuario no existe');
+            res.status(500).send('Error');
         }else{
             if(!exito){
-                res.status(404).send('Usuario o contraseña incorectos');
+                res.status(200).send('Usuario o contraseña incorectos');
             }else{
                 res.status(200).send(exito);
             }

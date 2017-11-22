@@ -18,6 +18,7 @@ var IniDif = 'empty';
 var n1, n2, suma;
 
 var Pasajero = require("./modelos/Pasajero.js");
+var Conductor = require("./modelos/Conductor");
 
 map.clear();
 conexionBD.connect('mongodb://app:passcuenta@ds113626.mlab.com:13626/busontime', (error, respuesta) => {
@@ -79,17 +80,34 @@ app.get('/PROBAR', function (req, res) {
 });
 
 app.post('/LOGINPASAJERO', function (req, res) {
-    var email=req.body.email;
-    var pass=req.body.pass;
-    Pasajero.findOne({email:email,contraseña:pass},(error,exito)=>{
-        if(error){
+    var email = req.body.email;
+    var pass = req.body.pass;
+    Pasajero.findOne({email: email, contraseña: pass}, (error, exito) => {
+        if (error) {
             res.status(500).send('Error');
-        }else{
-            if(!exito){
+        } else {
+            if (!exito) {
                 res.status(200).send('Usuario o contraseña incorectos');
-				console.log(email);
-				console.log(pass);
-            }else{
+                console.log(email);
+                console.log(pass);
+            } else {
+                res.status(200).send(exito);
+            }
+        }
+    });
+});
+app.post('/LOGINPASAJERO', function (req, res) {
+    var email = req.body.email;
+    var pass = req.body.pass;
+    Conductor.findOne({email: email, contraseña: pass}, (error, exito) => {
+        if (error) {
+            res.status(500).send('Error');
+        } else {
+            if (!exito) {
+                res.status(200).send('Usuario o contraseña incorectos');
+                console.log(email);
+                console.log(pass);
+            } else {
                 res.status(200).send(exito);
             }
         }
@@ -125,7 +143,26 @@ app.post('/REGISTRARPASAJERO', function (req, res) {
         if (error) {
             res.status(500).send({mesaje: 'Error'});
         } else {
-            console.log(req+"");
+            console.log(req + "");
+        }
+    })
+    //res.status(200).send('Exito');
+});
+
+app.post('/REGISTRARCONDUCTOR', function (req, res) {
+    var conductor = new Conductor();
+    var parametros = req.body;
+    res.status(200).send('Exito');
+    conductor.nombre = parametros.nombre;
+    conductor.apaterno = parametros.apaterno;
+    conductor.amaterno = parametros.amaterno;
+    conductor.email = parametros.email;
+    conductor.contraseña = parametros.contraseña;
+    (conductor).save((error, exito) => {
+        if (error) {
+            res.status(500).send({mesaje: 'Error'});
+        } else {
+            console.log(req + "");
         }
     })
     //res.status(200).send('Exito');

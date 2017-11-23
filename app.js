@@ -96,7 +96,7 @@ app.post('/LOGINPASAJERO', function (req, res) {
         }
     });
 });
-app.post('/LOGINPASAJERO', function (req, res) {
+app.post('/LOGINCONDUCTOR', function (req, res) {
     var email = req.body.email;
     var pass = req.body.pass;
     Conductor.findOne({email: email, contraseña: pass}, (error, exito) => {
